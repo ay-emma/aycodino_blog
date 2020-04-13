@@ -1,0 +1,65 @@
+ {% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/main.css' %}">
+   
+    {% if title %}
+    <title> Django Blog - {{ title }} </title>
+    {% else %}
+    <title>Django Blog</title>
+    {% endif %}
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <h3 class="logo">Django Blog</h3>
+
+            <nav>
+                <ul>
+                <li><a href="{% url 'blog-home' %}">Home</a></li>
+                <li><a href="{% url 'blog-about' %}">About</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+            </nav>
+
+        </div>
+    </header>
+    <main>
+        <section class="wrapper">
+            <div class="article-wrapper">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% block content %}
+        
+                {% endblock %}
+
+            </div>
+            <aside>
+                <h2>Our Sidebar</h2>
+                <p>You can get information here you'd like</p>
+                <ul>
+                    <li>Latest Posts</li>
+                    <li>Anoucement</li>
+                    <li>Calender</li>
+                    <li>Etc</li>
+                </ul>
+            </aside>
+        
+        </section>
+    </main>
+    
+</body>
+</html>

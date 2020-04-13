@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+    {% for post in posts %}
+     
+    <article class="post-wrapper">
+        <div class="post-body">
+            <div class="post-metadata">
+            
+                <a href="#">{{ post.author }}</a>
+                <small> {{post.date_posted|date:"F d, Y"}} </small>
+            </div>
+            <h1 >
+                <a class="post-title" href="">{{ post.title }}</a>
+            </h1>
+            <p class="post-content"> {{ post.content }} </p>
+        </div>
+    </article>
+
+    {% endfor %}
+{% endblock content %}
+
+
+    
+    
